@@ -1,15 +1,18 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
+    <img src="{{logoUrl}}">
+    <h1>{{ logoUrl }}</h1>
   </div>
 </template>
 
 <script>
+import * as logo from './assets/logo.png';
+
 export default {
   data () {
     return {
-      msg: 'Hello Vue!'
+      msg: 'Hello Vue!',
+      logoUrl: logo
     }
   }
 }
