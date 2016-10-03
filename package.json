@@ -1,31 +1,34 @@
 {
   "name": "time-saver",
-  "version": "1.0.0",
-  "private": true,
   "description": "A simple app to save time by calculating the amount of time saved/lost by automating a task.",
+  "author": "William Shiao <willshiao@gmail.com>",
+  "private": true,
   "scripts": {
+    "dev": "webpack-dev-server --open --inline --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "clean": "rimraf ./dist",
-    "build": "npm run clean && webpack",
+    "build-old": "npm run clean && webpack",
     "build-dev": "webpack --config ./webpack.config.dev.js",
-    "dev": "webpack-dev-server --content-base dist/ --config ./webpack.config.dev.js"
+    "dev-old": "webpack-dev-server --content-base dist/ --config ./webpack.config.dev.js"
   },
-  "author": "William Shiao",
-  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.0.1"
+  },
   "devDependencies": {
-    "babel-core": "^6.14.0",
-    "babel-loader": "^6.2.5",
-    "babel-preset-es2015": "^6.14.0",
-    "css-loader": "^0.24.0",
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
     "electron": "^1.4.2",
     "file-loader": "^0.9.0",
-    "html-webpack-plugin": "^2.22.0",
     "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.15.0"
+    "vue-loader": "^9.4.0",
+    "webpack": "2.1.0-beta.22",
+    "webpack-dev-server": "^2.1.0-beta.0"
   },
-  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/willshiao/time-saver.git"
@@ -33,6 +36,5 @@
   "bugs": {
     "url": "https://github.com/willshiao/time-saver/issues"
   },
-  "homepage": "https://github.com/willshiao/time-saver#readme",
-  "main": "main.js"
+  "homepage": "https://github.com/willshiao/time-saver#readme"
 }
