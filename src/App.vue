@@ -16,7 +16,7 @@
          </div>
       </div>
 
-      <div class="form-group" v-show="showTimesInput">
+      <div class="form-group" v-show="freqSelect == 1">
         <label for="numTimes">Number of times</label>
         <input type="number" class="form-control" id="numTimes" placeholder="" min="0" v-model="numTimes">
       </div>
@@ -32,14 +32,20 @@
         <input type="text" class="form-control" id="autoCost" v-model="autoCostStr" placeholder="1 hour" aria-describedby="autoCostSeconds">
         <small id="autoCostSeconds" class="form-text text-muted">{{autoCost/1000}} seconds</small>
       </div>
-      
-      <hr>
-
-      <strong v-show="timeSaved >= 0">Time Saved: </strong>
-      <strong v-show="timeSaved < 0">Time Lost: </strong>
-      <em>{{timeSavedStr}}</em>
-
     </form>
+    <form class="form-inline" v-show="freqSelect == 2">
+      <label>Activity Interval</label><br>
+      Every
+      <input type="text" class="form-control" v-model="freqStr">
+      for
+      <input type="text" class="form-control" v-model="durationStr">
+      <small class="form-text text-muted">~{{actTimes}} times</small>
+    </form>
+    <hr>
+
+    <strong v-show="timeSaved >= 0">Time Saved: </strong>
+    <strong v-show="timeSaved < 0">Time Lost: </strong>
+    <em>{{timeSavedStr}}</em>
   </div>
 </template>
 
@@ -54,9 +60,11 @@ export default {
   data () {
     return {
       freqSelect: 1,
-      actDurationStr: "1 hour",
+      actDurationStr: "5 hours",
       numTimes: 1,
-      autoCostStr: "1 hour"
+      autoCostStr: "1 hour",
+      freqStr: "1 day",
+      durationStr: "1 month"
     }
   },
   computed: {
@@ -64,10 +72,10 @@ export default {
       return parseTime(this.actDurationStr.toString());
     },
     totalDuration: function() {
-      return this.actDuration * this.numTimes;
-    },
-    showTimesInput: function() {
-      return this.freqSelect == 1;
+      if(this.freqSelect == 1) {
+        return this.actDuration * this.numTimes;
+      }
+      return this.actTimes * this.actDuration;
     },
     autoCost: function() {
       return parseTime(this.autoCostStr.toString());
@@ -77,13 +85,22 @@ export default {
     },
     timeSavedStr: function() {
       return humanizeTime(this.timeSaved);
-    } 
+    },
+    freqNum: function() {
+      return parseTime(this.freqStr);
+    },
+    durationNum: function() {
+      return parseTime(this.durationStr);
+    },
+    actTimes: function() {
+      return (this.durationNum/this.freqNum);
+    }
   }
 }
 </script>
 
 <style>
-body {
-  font-family: Helvetica, sans-serif;
+label {
+  font-weight: bold;
 }
 </style>
