@@ -28,6 +28,10 @@ module.exports = {
         query: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css',
       }
     ]
   },
@@ -35,7 +39,14 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  'plugins': [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.Tether': 'tether'
+    })
+  ]
 }
 
 if (process.env.NODE_ENV === 'production') {
