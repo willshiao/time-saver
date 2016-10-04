@@ -1,18 +1,13 @@
 # time-saver
 
-> A simple app to save time by calculating the amount of time saved/lost by automating a task.
+## About
 
-## Build Setup
+A simple app to save time by calculating the amount of time saved/lost by automating a task. Supports both repeating and one-time tasks.
 
-``` bash
-# install dependencies
-npm install
+Written using [Electron](http://electron.atom.io/), [Vue.js](https://vuejs.org/), and [Bootstrap](https://getbootstrap.com/).
 
-# serve with hot reload at localhost:8080
-npm run dev
 
-# build for production with minification
-npm run build
-```
+## Inspired by
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+![Is It Worth the Time?](https://imgs.xkcd.com/comics/is_it_worth_the_time.png)
+
