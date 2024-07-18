@@ -15,7 +15,7 @@
     "run": "electron ."
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.4",
+    "bootstrap": "^5.0.0",
     "humanize-duration": "^3.9.1",
     "jquery": "^3.1.1",
     "parse-duration": "^0.1.1",
